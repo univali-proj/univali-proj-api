@@ -68,4 +68,4 @@ O endereço dos endpoints, por padrão, começa com `/api/v1/`. Para um endpoint
 
 # Ruff
 
-Ruff é um linter que faz correções com base em expressões idiomáticas do Python. Para ver as sugestões dadas, use `ruff check src`. Para implementar as sugestões dadas, use `ruff check src --fix`.
+Ruff é um linter que faz correções com base em expressões idiomáticas do Python. Para ver as sugestões dadas, use `ruff check .` e, para implementar as sugestões dadas, use `ruff check --fix`. O linter já está configurado para olhar apenas o que está dentro da pasta `app/`.
