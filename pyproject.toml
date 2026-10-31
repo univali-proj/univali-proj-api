@@ -38,6 +38,7 @@ dependencies = [
     "pytest==9.2.0",
     "python-dotenv==1.2.4",
     "pyyaml==6.0.3",
+    "ruff>=0.17.3",
     "sqlalchemy==2.1.6",
     "starlette==1.10.0",
     "typing-extensions==4.16.0",
@@ -54,3 +55,6 @@ univali-proj-api = "univali_proj_api:main"
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]
 build-backend = "uv_build"
+
+[tool.ruff.lint]
+ignore = ["I001"]
