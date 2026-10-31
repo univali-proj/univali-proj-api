@@ -5,8 +5,8 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api.router import api_router
 from app.core.config import Settings, get_settings, load_environment
+from app.router import register_routers
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
             allow_headers=["*"],
         )
 
-    app.include_router(api_router, prefix=settings.API_V1_PREFIX)
+    register_routers(app, prefix=settings.API_V1_PREFIX)
     return app
 
 
