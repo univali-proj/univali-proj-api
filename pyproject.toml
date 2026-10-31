@@ -58,3 +58,6 @@ build-backend = "uv_build"
 
 [tool.ruff.lint]
 ignore = ["I001"]
+
+[tool.ruff]
+include = ["app/**/*.py"]
