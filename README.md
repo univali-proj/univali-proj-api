@@ -65,3 +65,7 @@ Caso faça uma entidade do banco, como as que estão em `app/models`, e precise 
 Para inicializar o servidor, use `./scripts/dev.sh`. Caso não queira fazer migrações do alembic automaticamente, use `./scripts/dev.sh --no-migrate`. Isso vai inicializar o servidor pelo uvicorn em localhost na porta 8000.
 
 O endereço dos endpoints, por padrão, começa com `/api/v1/`. Para um endpoint `/users`, por exemplo, estaria em `http://localhost:8000/api/v1/users`.
+
+# Ruff
+
+Ruff é um linter que faz correções com base em expressões idiomáticas do Python. Para ver as sugestões dadas, use `ruff check src`. Para implementar as sugestões dadas, use `ruff check src --fix`.
