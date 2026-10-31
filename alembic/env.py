@@ -13,7 +13,7 @@ if config.config_file_name is not None:
 
 target_metadata = Base.metadata
 
-# A URL vem das configurações da aplicação (.env / local.env), não do alembic.ini
+# A URL vem das configurações da aplicação (.env / .env.local), não do alembic.ini
 database_url = get_settings().DATABASE_URL
 
 

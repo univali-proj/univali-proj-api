@@ -9,7 +9,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 BASE_DIR = Path(__file__).resolve().parents[2]
 BASE_ENV_FILE = BASE_DIR / ".env"
-LOCAL_ENV_FILE = BASE_DIR / "local.env"
+LOCAL_ENV_FILE = BASE_DIR / ".env.local"
 
 
 class Environment(StrEnum):
@@ -19,7 +19,7 @@ class Environment(StrEnum):
 
 
 def load_environment() -> Environment:
-    """Resolve o APP_ENV com prioridade: variável do SO > local.env (apenas em desenvolvimento) > .env > development."""
+    """Resolve o APP_ENV com prioridade: variável do SO > .env.local (apenas em desenvolvimento) > .env > development."""
     if value := os.getenv("APP_ENV"):
         return Environment(value.lower())
 
