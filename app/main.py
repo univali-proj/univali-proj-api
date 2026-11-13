@@ -53,5 +53,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     register_routers(app, prefix=settings.API_V1_PREFIX)
 
+    return app
+
 
 app = create_app()
