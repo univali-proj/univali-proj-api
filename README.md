@@ -69,3 +69,43 @@ O endereço dos endpoints, por padrão, começa com `/api/v1/`. Para um endpoint
 # Ruff
 
 Ruff é um linter que faz correções com base em expressões idiomáticas do Python. Para ver as sugestões dadas, use `ruff check .` e, para implementar as sugestões dadas, use `ruff check --fix`. O linter já está configurado para olhar apenas o que está dentro da pasta `app/`.
+
+## Endpoint de teste e integração com o frontend
+
+A API disponibiliza um endpoint simples para validar se o frontend publicado no
+Vercel consegue se comunicar com o backend:
+
+- `GET /test` — retorna o texto puro `hello world`.
+
+Exemplo local:
+
+```bash
+curl http://localhost:8000/test
+```
+
+Resposta:
+
+```text
+hello world
+```
+
+### CORS para o frontend no Vercel
+
+Em produção, configure `CORS_ORIGINS` nas variáveis de ambiente do serviço que
+hospeda o backend com a origem exata do frontend, por exemplo:
+
+```env
+CORS_ORIGINS=["https://seu-projeto.vercel.app"]
+```
+
+Se houver um domínio próprio, inclua-o também:
+
+```env
+CORS_ORIGINS=["https://seu-projeto.vercel.app","https://www.seudominio.com"]
+```
+
+Não coloque a URL do frontend em `DATABASE_URL` ou em `SECRET_KEY`: são
+configurações distintas. O backend precisa estar publicado em um serviço que
+execute aplicações Python/FastAPI e ter uma URL pública própria. No frontend,
+faça a requisição para `https://URL-DO-SEU-BACKEND/test` (não para uma rota
+relativa do domínio Vercel), usando a URL real do backend.
