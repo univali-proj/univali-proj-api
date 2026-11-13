@@ -1,9 +1,10 @@
-from app.router import build_router
-from fastapi import APIRouter, FastAPI
+from fastapi import APIRouter
+from fastapi.responses import PlainTextResponse
 
-app = APIRouter(prefix="/test", tags=["Test"])
+router = APIRouter(prefix="/test", tags=["Test"])
 
-# Endpoint simples para validar a comunicação com o frontend.
-@app.get("", response_class=PlainTextResponse, tags=["Health"])
+
+@router.get("", response_class=PlainTextResponse)
 async def test_endpoint() -> str:
+    """Endpoint simples para validar a comunicação com o frontend."""
     return "hello world"
