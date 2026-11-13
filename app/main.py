@@ -53,12 +53,5 @@ def create_app(settings: Settings | None = None) -> FastAPI:
 
     register_routers(app, prefix=settings.API_V1_PREFIX)
 
-    # Endpoint simples para validar a comunicação com o frontend.
-    @app.get("/test", response_class=PlainTextResponse, tags=["Health"])
-    async def test_endpoint() -> str:
-        return "hello world"
-
-    return app
-
 
 app = create_app()
