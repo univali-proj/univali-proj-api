@@ -49,12 +49,13 @@ dependencies = [
     "websockets==17.4",
 ]
 
-[project.scripts]
-univali-proj-api = "univali_proj_api:main"
-
 [build-system]
 requires = ["uv_build>=0.13.6,<0.14.0"]
 build-backend = "uv_build"
+
+[tool.uv.build-backend]
+module-name = "app"
+module-root = ""
 
 [tool.ruff.lint]
 ignore = ["I001"]
