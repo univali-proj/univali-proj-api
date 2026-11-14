@@ -167,20 +167,3 @@ Execute `alembic upgrade head` como uma etapa controlada de implantação, com a
 variáveis do banco de destino configuradas. Não execute migrações em cada
 requisição nem na inicialização de cada instância serverless. Verifique se a
 implantação exige uma URL direta, sem pooling, para as migrações.
-
-No frontend, configure a URL pública do backend e faça a requisição para
-`https://URL-DO-SEU-BACKEND/test` (não para uma rota relativa do frontend).
-Após publicar, valide o preflight usando uma origem cadastrada:
-
-```bash
-curl -i -X OPTIONS "https://URL-DO-SEU-BACKEND/test" \
-  -H "Origin: https://confitto.vercel.app" \
-  -H "Access-Control-Request-Method: GET" \
-  -H "Access-Control-Request-Headers: Authorization"
-```
-
-A resposta deve conter `Access-Control-Allow-Origin` com a origem enviada e
-`Access-Control-Allow-Credentials: true`. Se o Vercel bloquear a requisição
-antes de chegar ao FastAPI (por exemplo, pela proteção de deployments de
-Preview), ajuste essa proteção para os clientes autorizados; CORS na aplicação
-não elimina esse bloqueio.
