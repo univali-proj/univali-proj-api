@@ -117,7 +117,7 @@ A configuração atual em `app/main.py` já permite:
 - **Credenciais:** habilitadas (`allow_credentials=True`). Para enviar cookies
   entre origens, o frontend também precisa usar `credentials: "include"` e os
   cookies precisam de atributos apropriados, como `SameSite=None; Secure`
-  quando forem entre sites.
+  quando forem entre sites para HTTPS.
 
 Não é necessário configurar variáveis adicionais para métodos ou cabeçalhos.
 Essas opções estão no código, não nas variáveis de ambiente. Se quiser
