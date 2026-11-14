@@ -34,11 +34,12 @@ def load_environment() -> Environment:
     return environment
 
 
-def get_env_files(environment: Environment) -> tuple[Path, ...]:
-    # O pydantic-settings dá prioridade ao último arquivo da tupla
+def get_env_files(environment: Environment) -> tuple[Path, ...] | None:
     if environment == Environment.DEVELOPMENT:
         return (BASE_ENV_FILE, LOCAL_ENV_FILE)
-    return (BASE_ENV_FILE,)
+
+    # Em produção e testes, não carregar arquivos .env
+    return None
 
 
 class Settings(BaseSettings):
@@ -56,7 +57,7 @@ class Settings(BaseSettings):
     SECRET_KEY: str
 
     model_config = SettingsConfigDict(
-        env_file=BASE_ENV_FILE,
+        env_file=None,
         env_file_encoding="utf-8",
         case_sensitive=True,
         extra="ignore",

@@ -9,7 +9,9 @@ build/
 .venv/
 venv/
 
-# Environment variables (temp)
+# Environment variables
+.env
+.env.*
 
 !.env.example
 
